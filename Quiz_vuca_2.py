@@ -194,3 +194,37 @@ if nome_usuario.lower() == 'marcos':
                     file_name=nome_json,
                     mime="application/json"
                 )
+                
+import streamlit as st
+
+# Adicionando um selectbox
+st.markdown("""
+    <style>
+        /* Personalizando a cor do selectbox */
+        .css-1c7cf12 {
+            background-color: #f0f8ff;
+            color: #ff6347;
+            border: 1px solid #ff6347;
+            border-radius: 5px;
+        }
+
+        .css-1c7cf12:hover {
+            background-color: #ff6347;
+            color: white;
+        }
+
+        /* Personalizando o texto da label */
+        .css-1bu4ps7 {
+            font-size: 18px;
+            color: #1e90ff;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Colocando o selectbox
+option = st.selectbox(
+    'Escolha uma cor:',
+    ['Azul', 'Vermelho', 'Verde', 'Amarelo']
+)
+
+st.write(f'Você escolheu: {option}')
