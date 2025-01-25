@@ -174,8 +174,12 @@ if nome_usuario.lower() == 'marcos':
         if file.tell() == 0:
             writer.writerow(cabecalho)
 
-        for i, q in enumerate(questions, 1):
-            writer.writerow([nome_usuario, f'Pergunta {i}: {q["question"]}', user_answers[f'Pergunta {i}'], score])
+        row = [nome_usuario] 
+
+        for i in range(1, len(questions) + 1):
+            row.append(user_answers.get(f'Pergunta {i}', ''))
+
+        row.append(score)
 
     with open(nome_csv, 'rb') as f:
         st.download_button(
