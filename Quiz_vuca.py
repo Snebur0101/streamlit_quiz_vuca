@@ -128,3 +128,14 @@ questions = [
 ]
 
 st.title('Quiz de conhecimentos gerais do sistema VUCA')
+
+nome = st. selectbox(
+    'Quem está respondendo?',
+    ('Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Marcos', 'Márcio', 'Pedro', 'Rubens', 'Tiago'),
+    )
+
+st.header('Perguntas')
+st.subheader('Responda todas as perguntas abaixo:')
+
+for i, q in enumerate(question, 1):
+    st.markdown(f'**Pergunta {i}: {q['question']}**')
