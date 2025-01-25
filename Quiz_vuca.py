@@ -181,9 +181,9 @@ if nome_usuario.lower() == 'marcos':
         row.append(score)
 
         writer.writerow(row)
-        
-    with open(nome_csv, 'rb') as f:
-        st.download_button(
+
+        with open(nome_csv, 'rb') as f:
+            st.download_button(
             label="Baixar Respostas",
             data=f,
             file_name=nome_csv,
