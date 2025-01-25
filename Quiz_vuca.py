@@ -1,5 +1,9 @@
 import streamlit as st
-from streamlit import feedback
+import csv
+
+nome_csv = 'Respotas_quiz'
+cabecalho = ['Nome do usuário', 'Pergunta', 'Resposta', 'Pontuação']
+
 
 questions = [
     {
@@ -136,7 +140,7 @@ user_answers = {}
 
 st.title('Quiz de conhecimentos gerais do sistema VUCA')
 
-nome = st. selectbox(
+nome_usuario = st. selectbox(
     'Quem está respondendo?',
     ('','Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Marcos', 'Márcio', 'Pedro', 'Rubens', 'Tiago'),
     )
@@ -162,3 +166,21 @@ if st.button('Terminar o quiz'):
     for i, fb in enumerate(feedback, 1):
         st.write(f'Pergunta {i}: {fb}')
     st.write(f'A sua pontuação foi: {score}')
+
+if nome_usuario.lower() == 'marcos':
+    with open(nome_csv, mode='a', newline='') as file:
+        writer = csv.writer(file)
+
+        if file.tell() == 0:
+            writer.writerow(cabecalho)
+
+        for i, q in enumerate(questions, 1):
+            writer.writerow([nome_usuario, f'Pergunta {i}: {q["question"]}', user_answers[f'Pergunta {i}'], score])
+
+    with open(nome_csv, 'rb') as f:
+        st.download_button(
+            label="Baixar Respostas",
+            data=f,
+            file_name=nome_csv,
+            mime="text/csv"
+        )
