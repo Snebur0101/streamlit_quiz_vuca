@@ -151,7 +151,7 @@ for i, q in enumerate(questions, 1):
 
     user_answers[f'Pergunta {i}'] = user_answer
 
-    if user_answer in q[questions]:
+    if user_answer in q['questions']:
         feedback.append(f'✅ Pergunta {i}: Resposta correta!')
     else:
         feedback.append(f'❌ Pergunta {i}: Respsota errada!')
