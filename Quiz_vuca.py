@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit import feedback
 
 questions = [
     {
@@ -127,6 +128,10 @@ questions = [
     },
 ]
 
+score = 0
+
+feedback = []
+
 st.title('Quiz de conhecimentos gerais do sistema VUCA')
 
 nome = st. selectbox(
@@ -137,5 +142,15 @@ nome = st. selectbox(
 st.header('Perguntas')
 st.subheader('Responda todas as perguntas abaixo:')
 
+user_answers = {}
+
 for i, q in enumerate(questions, 1):
     st.markdown(f'**Pergunta {i}: {q['question']}**')
+
+    user_answer =  st.radio('',q['options'],key=f'question_{i}_radio')
+
+    user_answers[f'Pergunta {i}'] = user_answer
+
+if st.button('Ver as respostas do usuário'):
+    st.title('Respostas do usuário:')
+    st.write(user_answers)
