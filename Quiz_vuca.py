@@ -138,7 +138,7 @@ st.title('Quiz de conhecimentos gerais do sistema VUCA')
 
 nome = st. selectbox(
     'Quem está respondendo?',
-    ('Selecione aqui','Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Marcos', 'Márcio', 'Pedro', 'Rubens', 'Tiago'),
+    ('','Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Marcos', 'Márcio', 'Pedro', 'Rubens', 'Tiago'),
     )
 
 st.header('Perguntas')
