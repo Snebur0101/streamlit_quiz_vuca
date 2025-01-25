@@ -156,6 +156,7 @@ for i, q in enumerate(questions, 1):
     else:
         feedback.append(f'❌ Pergunta {i}: Respsota errada!')
 
-if st.button('Ver as respostas do usuário'):
+if st.button('Terminar o quiz'):
     st.title('Respostas do usuário:')
-    st.write(user_answers)
+    for i, fb in enumerate(feedback, 1):
+        st.write(f'Pergunta {i}: {fb}')
