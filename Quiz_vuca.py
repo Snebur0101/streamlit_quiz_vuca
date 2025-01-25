@@ -132,17 +132,17 @@ score = 0
 
 feedback = []
 
+user_answers = {}
+
 st.title('Quiz de conhecimentos gerais do sistema VUCA')
 
 nome = st. selectbox(
     'Quem está respondendo?',
-    ('Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Marcos', 'Márcio', 'Pedro', 'Rubens', 'Tiago'),
+    ('Selecione aqui','Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Marcos', 'Márcio', 'Pedro', 'Rubens', 'Tiago'),
     )
 
 st.header('Perguntas')
 st.subheader('Responda todas as perguntas abaixo:')
-
-user_answers = {}
 
 for i, q in enumerate(questions, 1):
     st.markdown(f'**Pergunta {i}: {q['question']}**')
@@ -150,6 +150,11 @@ for i, q in enumerate(questions, 1):
     user_answer =  st.radio('',q['options'],key=f'question_{i}_radio')
 
     user_answers[f'Pergunta {i}'] = user_answer
+
+    if user_answer in q[questions]:
+        feedback.append(f'✅ Pergunta {i}: Resposta correta!')
+    else:
+        feedback.append(f'❌ Pergunta {i}: Respsota errada!')
 
 if st.button('Ver as respostas do usuário'):
     st.title('Respostas do usuário:')
