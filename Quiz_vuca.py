@@ -137,5 +137,5 @@ nome = st. selectbox(
 st.header('Perguntas')
 st.subheader('Responda todas as perguntas abaixo:')
 
-for i, q in enumerate(question, 1):
+for i, q in enumerate(questions, 1):
     st.markdown(f'**Pergunta {i}: {q['question']}**')
