@@ -152,6 +152,7 @@ for i, q in enumerate(questions, 1):
     user_answers[f'Pergunta {i}'] = user_answer
 
     if user_answer in q['correct_answers']:
+        score += 1
         feedback.append(f'✅ Pergunta {i}: Resposta correta!')
     else:
         feedback.append(f'❌ Pergunta {i}: Respsota errada!')
@@ -160,3 +161,4 @@ if st.button('Terminar o quiz'):
     st.title('Respostas do usuário:')
     for i, fb in enumerate(feedback, 1):
         st.write(f'Pergunta {i}: {fb}')
+    st.write(f'A sua pontuação foi: {score}')
