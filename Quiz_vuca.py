@@ -1,10 +1,6 @@
 import streamlit as st
 import csv
 
-nome_csv = 'Respotas_quiz'
-cabecalho = ['Nome do usuário', 'Pergunta', 'Resposta', 'Pontuação']
-
-
 questions = [
     {
         'question': 'Qual é o status necessário para que uma venda do delivery seja considerada no caixa?',
@@ -167,20 +163,25 @@ if st.button('Terminar o quiz'):
         st.write(f'Pergunta {i}: {fb}')
     st.write(f'A sua pontuação foi: {score}')
 
+nome_csv = 'Respotas_quiz.csv'
+cabecalho = ['Nome do usuário'] + [f'Pergunta {i}' for i in range(1, len(questions) + 1)] + ['Pontuação']
+
 if nome_usuario.lower() == 'marcos':
-    with open(nome_csv, mode='a', newline='') as file:
-        writer = csv.writer(file)
+        with open(nome_csv, mode='a', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
 
-        if file.tell() == 0:
-            writer.writerow(cabecalho)
+            if file.tell() == 0:
+                writer.writerow(cabecalho)
 
-        row = [nome_usuario] 
+        row = [nome_usuario]
 
         for i in range(1, len(questions) + 1):
-            row.append(user_answers.get(f'Pergunta {i}', ''))
+             row.append(user_answers.get(f'Pergunta {i}', ''))
 
         row.append(score)
 
+        writer.writerow(row)
+        
     with open(nome_csv, 'rb') as f:
         st.download_button(
             label="Baixar Respostas",
