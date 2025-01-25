@@ -6,12 +6,12 @@ nome_json = 'Respostas_quiz.json'
 questions = [
     {
         'question': 'Qual é o status necessário para que uma venda do delivery seja considerada no caixa?',
-        'options': ['Em Produção', 'Produzido', 'Finalizado', 'Aguardando'],
+        'options': ['selecione aqui a resposta','Em Produção', 'Produzido', 'Finalizado', 'Aguardando'],
         'correct_answers': ['Finalizado']
     },
     {
         'question': 'Qual é a função do botão "FORÇAR ACEITE" na retaguarda?',
-        'options': ['Cancelar pedidos no status Aguardando', 'Liberar pedidos travados no status Aguardando',
+        'options': ['selecione aqui a resposta','Cancelar pedidos no status Aguardando', 'Liberar pedidos travados no status Aguardando',
                     'Finalizar pedidos automaticamente', 'Emitir nota fiscal para pedidos pendentes'],
         'correct_answers': ['Liberar pedidos travados no status Aguardando']
     },
@@ -22,14 +22,14 @@ questions = [
     },
     {
         'question': 'Qual configuração é necessária para permitir pedidos no delivery?',
-        'options': ["RETAGUARDA > MENU > DELIVERY > ABA: CANAIS", "RETAGUARDA > PARÂMETROS > VUCAFOOD > ABA: FUNÇÕES",
+        'options': ['selecione aqui a resposta',"RETAGUARDA > MENU > DELIVERY > ABA: CANAIS", "RETAGUARDA > PARÂMETROS > VUCAFOOD > ABA: FUNÇÕES",
                     "RETAGUARDA > MENU > UNIDADES > ABA: PAGAMENTOS",
                     "RETAGUARDA > PARÂMETROS > ESTOQUE > ABA: PRODUTOS"],
         'correct_answers': ['RETAGUARDA > PARÂMETROS > VUCAFOOD > ABA: FUNÇÕES']
     },
     {
         'question': 'Qual informação é necessária para que o salário base de um colaborador seja exibido na aba "Dados da Contabilidade?',
-        'options': ['Vincular o colaborador a um regime de contratação',
+        'options': ['selecione aqui a resposta','Vincular o colaborador a um regime de contratação',
                     'Aprovar o período de experiência do colaborador',
                     'Vincular o salário base na aba: Retaguarda > RH > Colaboradores > Editar > Aba: Salário',
                     'Ativar o checkbox "Pagar" na aba Banco de Horas'],
@@ -37,7 +37,7 @@ questions = [
     },
     {
         'question': ' Onde é feito o cadastro inicial de um colaborador no sistema?',
-        'options': ["Retaguarda > Parâmetros > RH > Colaboradores",
+        'options': ['selecione aqui a resposta',"Retaguarda > Parâmetros > RH > Colaboradores",
                     "Retaguarda > Menu > RH > Colaboradores > Campo: +Adicionar",
                     "Retaguarda > Menu > Gerenciamento > Controle de Ponto > Colaboradores",
                     "Frente de Loja > Menu > RH > Campo: Colaboradores"],
@@ -45,7 +45,7 @@ questions = [
     },
     {
         'question': 'O que acontece quando um colaborador anexa um atestado pelo sistema?',
-        'options': ["O atestado é automaticamente aprovado e alimenta o controle de ponto.",
+        'options': ['selecione aqui a resposta',"O atestado é automaticamente aprovado e alimenta o controle de ponto.",
                     "O atestado precisa ser aprovado pelo RH para alimentar o controle de ponto",
                     "O atestado é apenas visualizado no perfil do colaborador",
                     "O sistema não permite anexar atestados diretamente pelo colaborador"],
@@ -53,14 +53,14 @@ questions = [
     },
     {
         'question': 'Onde você deve definir a carga horária semanal de um colaborador para cálculo correto do banco de horas?',
-        'options': ["RETAGUARDA > MENU > GERENCIAMENTO > CONTROLE DE PONTO",
+        'options': ['selecione aqui a resposta',"RETAGUARDA > MENU > GERENCIAMENTO > CONTROLE DE PONTO",
                     "RETAGUARDA > MENU > FINANCEIRO > CONTAS A PAGAR", "PARÂMETROS > RH > ABA: CARGA HORÁRIA SEMANAL",
                     "PARÂMETROS > RH > ABA: ADICIONAL NOTURNO"],
         'correct_answers': ['PARÂMETROS > RH > ABA: CARGA HORÁRIA SEMANAL']
     },
     {
         'question': 'Qual das opções abaixo descreve corretamente quando utilizar o motivo "Freelancer para TERCEIROS" no relógio de ponto?',
-        'options': ["Quando o colaborador está cumprindo sua própria carga horária",
+        'options': ['selecione aqui a resposta',"Quando o colaborador está cumprindo sua própria carga horária",
                     "Quando um freelancer está substituindo um colaborador escalado para trabalhar",
                     "Quando um freelancer foi contratado diretamente pela casa",
                     "Quando o colaborador realiza uma pausa para intervalo"],
@@ -68,13 +68,13 @@ questions = [
     },
     {
         'question': 'Onde deve ser feita a vinculação/ficha técnica dos produtos de venda e produção própria para que haja baixa automática no estoque?',
-        'options': ["Retaguarda > Menu > Compras > Ficha Técnica", "Retaguarda > Parâmetros > Estoque > Aba: Produtos",
+        'options': ['selecione aqui a resposta',"Retaguarda > Menu > Compras > Ficha Técnica", "Retaguarda > Parâmetros > Estoque > Aba: Produtos",
                     "Retaguarda > Relatórios > Estoque > Ficha Técnica", "Retaguarda > Menu > Estoque > Parâmetros"],
         'correct_answers': ['Retaguarda > Parâmetros > Estoque > Aba: Produtos']
     },
     {
         'question': "Qual aba deve ser acessada para cadastrar os motivos de cancelamento dos pedidos?",
-        'options': ["Retaguarda > Parâmetros > Estoque > Aba: Cancelamento",
+        'options': ['selecione aqui a resposta',"Retaguarda > Parâmetros > Estoque > Aba: Cancelamento",
                     "Retaguarda > Menu > Compras > Cancelamento",
                     "Retaguarda > Relatórios > Produtos > Aba: Cancelamento",
                     "Retaguarda > Estoque > Cancelamento > Motivos"],
@@ -82,7 +82,7 @@ questions = [
     },
     {
         'question': "O que ocorre ao ativar o checkbox 'Abrir comanda ao cadastrar novo Cartão Consumo'",
-        'options': ["A tela retorna para o início, permitindo cadastrar um novo cartão",
+        'options': ['selecione aqui a resposta',"A tela retorna para o início, permitindo cadastrar um novo cartão",
                     "Abre diretamente a tela de lançamentos de produtos após cadastrar o cartão",
                     "Bloqueia a abertura de novas comandas no sistema",
                     "Permite o cadastro de um cartão sem a necessidade de preencher os dados do cliente"],
@@ -90,7 +90,7 @@ questions = [
     },
     {
         'question': 'O que ocorre ao ativar o checkbox "Ativar sincronização com Frente de Loja"?',
-        'options': ['Os dados dos pedidos são armazenados apenas no tablet',
+        'options': ['selecione aqui a resposta','Os dados dos pedidos são armazenados apenas no tablet',
                     'Os lançamentos feitos pelo tablet são sincronizados automaticamente com o sistema de frente de loja',
                     'O tablet passa a operar de forma independente do sistema de frente de loja',
                     'Os pedidos enviados pelo tablet são excluídos ao sincronizar com o sistema'],
@@ -98,7 +98,7 @@ questions = [
     },
     {
         'question': "Qual é o requisito básico para configurar uma impressora térmica via rede.",
-        'options': ["Configurar a largura do papel diretamente no painel da impressora",
+        'options': ['selecione aqui a resposta',"Configurar a largura do papel diretamente no painel da impressora",
                     "Definir o endereço IP manualmente no sistema e no roteador",
                     "Garantir que a impressora esteja conectada à mesma rede do computador",
                     "Atualizar o firmware da impressora antes de conectá-la"],
@@ -106,7 +106,7 @@ questions = [
     },
     {
         'question': "Durante a configuração de uma impressora de rede, qual procedimento é recomendado para verificar a conexão?",
-        'options': ["Testar a impressão de um documento diretamente pelo painel da impressora",
+        'options': ['selecione aqui a resposta',"Testar a impressão de um documento diretamente pelo painel da impressora",
                     "Executar um comando PING para o endereço IP da impressora",
                     "Substituir o cabo de energia por um modelo novo",
                     "Habilitar o DHCP para gerar automaticamente um IP dinâmico"],
@@ -114,7 +114,7 @@ questions = [
     },
     {
         'question': "Durante a configuração de uma impressora de rede, qual procedimento é recomendado para verificar a conexão?",
-        'options': ["Testar a impressão de um documento diretamente pelo painel da impressora",
+        'options': ['selecione aqui a resposta',"Testar a impressão de um documento diretamente pelo painel da impressora",
                     "Executar um comando PING para o endereço IP da impressora",
                     "Substituir o cabo de energia por um modelo novo",
                     "Habilitar o DHCP para gerar automaticamente um IP dinâmico"],
@@ -122,7 +122,7 @@ questions = [
     },
     {
         'question': "Como o adicional noturno é gerenciado no sistema?",
-        'options': ["É automaticamente calculado com base nas horas trabalhadas no mês",
+        'options': ['selecione aqui a resposta',"É automaticamente calculado com base nas horas trabalhadas no mês",
             "Deve ser cadastrado na aba Retaguarda > Parâmetros > RH > Aba: Adicional Noturno",
             "O colaborador insere manualmente suas horas de adicional noturno",
             "É calculado apenas no fechamento da folha de pagamento pelo financeiro"],
