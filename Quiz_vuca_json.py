@@ -2,17 +2,15 @@ import streamlit as st
 import json
 import os
 
-# Função para carregar perguntas de um arquivo JSON
 def carregar_perguntas(nome_json):
     try:
-        with open(nome_json, 'r', encoding='utf-8') as file:
-            perguntas = json.load(file)
+        with open('quiz_vuca.json', 'r', encoding='utf-8') as file:
+            quiz_data = json.load(file)
     except FileNotFoundError:
         st.error(f'O arquivo {nome_json} não foi encontrado!')
         perguntas = []
     return perguntas
 
-# Arquivo JSON onde as perguntas estão armazenadas
 nome_json = 'perguntas.json'
 
 # Carregar as perguntas
