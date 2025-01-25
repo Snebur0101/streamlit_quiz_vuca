@@ -1,6 +1,8 @@
 import streamlit as st
-import csv
+import json
+import os
 
+nome_json = 'Respostas_quiz.json'
 questions = [
     {
         'question': 'Qual é o status necessário para que uma venda do delivery seja considerada no caixa?',
@@ -168,22 +170,27 @@ cabecalho = ['Nome do usuário'] + [f'Pergunta {i}' for i in range(1, len(questi
 
 if nome_usuario.lower() == 'marcos':
         with open(nome_csv, mode='a', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
+            respostas = {
+                'nome_usuario': nome_usuario,
+                'pontuacao': score,
+                'respostas': user_answers
+            }
 
-            if file.tell() == 0:
-                writer.writerow(cabecalho)
+            if os.path.exists(nome_json):
+                with open(nome_json, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+            else:
+                data = []
 
-        row = [nome_usuario]
+            data.append(respostas)
 
-        for i in range(1, len(questions) + 1):
-             row.append(user_answers.get(f'Pergunta {i}', ''))
+            with open(nome_json, 'w', encoding='utf-8') as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
 
-        row.append(score)
-
-        with open(nome_csv, 'rb') as f:
-            st.download_button(
-            label="Baixar Respostas",
-            data=f,
-            file_name=nome_csv,
-            mime="text/csv"
-        )
+            with open(nome_json, 'rb') as f:
+                st.download_button(
+                    label="Baixar Respostas",
+                    data=f,
+                    file_name=nome_json,
+                    mime="application/json"
+                )
