@@ -1,6 +1,4 @@
 firebase-admin
-streamlit_authenticator
-pandas
-numpy
-requests
+streamlit-authenticator
+matplotlib
 secrets
