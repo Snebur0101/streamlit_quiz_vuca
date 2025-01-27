@@ -14,17 +14,18 @@ senhas =  ['Torchic123', 'Davi123', 'Felipe123', 'Hiago123', 'Ismael123', 'Jôna
 hashed_senhas = stauth.Hasher(senhas).generate()
 
 cookie_name = "meu_cookie_auth"
-autenticador = stauth.Authenticate(nomes, usuarios, hashed_senhas, 'cookie_name', 'random_key')
-nome, authentication_status, usuarios = autenticador.login('Login','sidebar')
+random_key = "chave_aleatoria"
+autenticador = stauth.Authenticate(nomes, usuarios, hashed_senhas, cookie_name, random_key)
+nome, authentication_status, usuario = autenticador.login('Login','sidebar')
 
 if authentication_status is True:
-    if usuarios == 'criador':
+    if usuario == 'criador':
         st.markdown('## Crie as perguntas do Quiz')
         pergunta = st.text_input('Digite a pergunta')
-        respostas = st.text_input('Difite as opçãode de resposta (separe elas por ponto e vírgula').split(';')
-        gabarito = st.text_input('Resposta correta (presica que a respota esteja escrita por extenso)')
+        respostas = st.text_input('Digite as opções de resposta (separe elas por ponto e vírgula)').split(';')
+        gabarito = st.text_input('Resposta correta (precisa que a resposta esteja escrita por extenso)')
 
-        if st.button('Salvar Respota'):
+        if st.button('Salvar Resposta'):
             if pergunta and respostas and gabarito:
                 data = {
                     'pergunta': pergunta,
@@ -35,14 +36,13 @@ if authentication_status is True:
                 st.success('Pergunta foi salva com sucesso!')
             else:
                 st.error('Algum campo não foi preenchido, verifique novamente se todos os campos foram preenchidos!')
-    elif usuarios == 'respondente':
+    elif usuario == 'respondente':
         st.markdown('Responda todas as perguntas abaixo:')
 
         pergunta_ref = db.collection('perguntas').stream()
-        pergunta = [{'id': p.id, **p.to_dict()} for p in pergunta_ref]
+        perguntas = [{'id': p.id, **p.to_dict()} for p in pergunta_ref]
 
-        if pergunta:
-            for i, pergunta in enumerate(pergunta):
-                st.markdown(f'### Pergunta {i + 1}: {pergunta['pergunta']}')
-                respostas = st.selectbox('Escolha uma opçao', pergunta[respostas], key=pergunta['id'])
-
+        if perguntas:
+            for i, pergunta in enumerate(perguntas):
+                st.markdown(f'### Pergunta {i + 1}: {pergunta["pergunta"]}')
+                resposta = st.selectbox('Escolha uma opção', pergunta['respostas'], key=pergunta['id'])
