@@ -14,7 +14,9 @@ db = firestore.client()
 nomes = ['Marcos', 'Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Márcio', 'Pedro', 'Rubens', 'Tiago']
 usuarios = ['criador', 'respondente', 'respondente', 'respondente', 'respondente', 'respondente', 'respondente',
             'respondente', 'respondente', 'respondente', 'respondente']
-senhas = ['Torchic123', 'Davi123', 'Felipe123', 'Hiago123', 'Ismael123', 'Jônatas123', 'Levi123', 'Márcio123', 'Pedro123', 'Rubens123', 'Tiago123']
+senhas = ['Torchic123', 'Davi123', 'Felipe123', 'Hiago123', 'Ismael123', 'Jônatas123', 'Levi123', 'Márcio123', 
+          'Pedro123', 'Rubens123', 'Tiago123']
+
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -23,7 +25,13 @@ hashed_senhas = [hash_password(senha) for senha in senhas]
 cookie_name = "meu_cookie_auth"
 random_key = "chave_aleatoria"
 autenticador = stauth.Authenticate(nomes, usuarios, hashed_senhas, cookie_name, random_key)
+
 nome, authentication_status, usuario = autenticador.login('Login', 'sidebar')
+
+if authentication_status:
+    st.write(f"Olá {nome}, você está autenticado como {usuario}.")
+else:
+    st.write("Falha na autenticação!")
 
 if authentication_status is True:
     if usuario == 'criador':
