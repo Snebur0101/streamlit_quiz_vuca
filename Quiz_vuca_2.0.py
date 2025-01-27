@@ -3,6 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import streamlit_authenticator as stauth
 import matplotlib.pyplot as plt
+import hashlib
 
 if not firebase_admin._apps:
     cred = credentials.Certificate("credenciais_quiz.json")
@@ -13,9 +14,11 @@ db = firestore.client()
 nomes = ['Marcos', 'Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Márcio', 'Pedro', 'Rubens', 'Tiago']
 usuarios = ['criador', 'respondente', 'respondente', 'respondente', 'respondente', 'respondente', 'respondente',
             'respondente', 'respondente', 'respondente', 'respondente']
-senhas = ['Torchic123', 'Davi123', 'Felipe123', 'Hiago123', 'Ismael123', 'Jônatas123', 'Levi123', 'Márcio123',
-          'Pedro123', 'Rubens123', 'Tiago123']
-hashed_senhas = stauth.Hasher(senhas).generate()
+senhas = ['Torchic123', 'Davi123', 'Felipe123', 'Hiago123', 'Ismael123', 'Jônatas123', 'Levi123', 'Márcio123', 'Pedro123', 'Rubens123', 'Tiago123']
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+hashed_senhas = [hash_password(senha) for senha in senhas]
 
 cookie_name = "meu_cookie_auth"
 random_key = "chave_aleatoria"
