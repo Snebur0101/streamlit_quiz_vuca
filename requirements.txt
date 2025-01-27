@@ -1,3 +1,6 @@
-firebase-admin,
-streamlit_authenticator,
-secrets,
+firebase-admin
+streamlit_authenticator
+pandas
+numpy
+requests
+secrets
