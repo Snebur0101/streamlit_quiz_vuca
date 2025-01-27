@@ -32,17 +32,17 @@ if authentication_status is True:
                     'gabarito': gabarito
                 }
                 db.collection('perguntas').add(data)
-                st;success('Pergunta foi salva com sucesso!')
+                st.success('Pergunta foi salva com sucesso!')
             else:
                 st.error('Algum campo não foi preenchido, verifique novamente se todos os campos foram preenchidos!')
     elif usuarios == 'respondente':
         st.markdown('Responda todas as perguntas abaixo:')
 
-        pergunta_ref = db.collection('perguntas'),stream()
+        pergunta_ref = db.collection('perguntas').stream()
         pergunta = [{'id': p.id, **p.to_dict()} for p in pergunta_ref]
 
-        if perguntas:
-            for i, pergunta in enumerate(perguntas):
+        if pergunta:
+            for i, pergunta in enumerate(pergunta):
                 st.markdown(f'### Pergunta {i + 1}: {pergunta['pergunta']}')
                 respostas = st.selectbox('Escolha uma opçao', pergunta[respostas], key=pergunta['id'])
 
