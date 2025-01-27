@@ -1,9 +1,3 @@
-name: my-environment
-dependencies:
-  - python=3.12
-  - firebase-admin
-  - streamlit-authenticator
-  - matplotlib
-  - secrets
-  - libssl-dev  # Dependência do sistema para Linux
-  - openssl  # Dependência do sistema para outros sistemas
+firebase-admin
+streamlit-authenticator
+matplotlib
