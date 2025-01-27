@@ -1,9 +1,9 @@
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
-import streamlit_authenticator as stauth
 import matplotlib.pyplot as plt
-import hashlib
+
+from Quiz_vuca import nome_usuario
 
 if not firebase_admin._apps:
     cred = credentials.Certificate("credenciais_quiz.json")
@@ -11,30 +11,21 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
-nomes = ['Marcos', 'Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Márcio', 'Pedro', 'Rubens', 'Tiago']
-usuarios = ['criador', 'respondente', 'respondente', 'respondente', 'respondente', 'respondente', 'respondente',
-            'respondente', 'respondente', 'respondente', 'respondente']
-senhas = ['Torchic123', 'Davi123', 'Felipe123', 'Hiago123', 'Ismael123', 'Jônatas123', 'Levi123', 'Márcio123', 
-          'Pedro123', 'Rubens123', 'Tiago123']
+def obter_tipo_usuario(nome_usuario):
+    user_ref = db.collection('usuarios').document(nome_usuario)
+    user_doc = user_ref.get()
 
-def hash_password(password):
-    return hashlib.sha256(password.encode()).hexdigest()
+    if user_doc.exists:
+        return user_doc.to_dict().get('tipo')
+    else:
+        return None 
+    
+nome_usuario = st.text_input('Digite o seu nome de usuário')
 
-hashed_senhas = [hash_password(senha) for senha in senhas]
-
-cookie_name = "meu_cookie_auth"
-random_key = "chave_aleatoria"
-autenticador = stauth.Authenticate(nomes, usuarios, hashed_senhas, cookie_name, random_key)
-
-nome, authentication_status, usuario = autenticador.login('Login', 'sidebar')
-
-if authentication_status:
-    st.write(f"Olá {nome}, você está autenticado como {usuario}.")
-else:
-    st.write("Falha na autenticação!")
-
-if authentication_status is True:
-    if usuario == 'criador':
+if nome_usuario:
+    tipo_usuario = obter_tipo_usuario(nome_usuario)
+    
+    if tipo_usuario == 'criador':
         st.markdown('## Crie as perguntas do Quiz')
         pergunta = st.text_input('Digite a pergunta')
         respostas = st.text_input('Digite as opções de resposta (separe elas por ponto e vírgula)').split(';')
@@ -51,7 +42,7 @@ if authentication_status is True:
                 st.success('Pergunta foi salva com sucesso!')
             else:
                 st.error('Algum campo não foi preenchido, verifique novamente se todos os campos foram preenchidos!')
-    elif usuario == 'respondente':
+    elif tipo_usuario == 'respondente':
         st.markdown('Responda todas as perguntas abaixo:')
 
         pergunta_ref = db.collection('perguntas').stream()
