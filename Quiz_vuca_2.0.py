@@ -4,7 +4,7 @@ from firebase_admin import credentials, firestore
 import streamlit_authenticator as stauth
 import matplotlib.pyplot as plt
 
-cred = credentials.cerificate("credenciais_quiz.json")
+cred = credentials.Cerificate("credenciais_quiz.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
