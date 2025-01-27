@@ -4,10 +4,10 @@ from firebase_admin import credentials, firestore
 import streamlit_authenticator as stauth
 import matplotlib.pyplot as plt
 
-with:
-    if not firebase_admini._apps:
-        cred = credentials.Certificate("credenciais_quiz.json")
-        firebase_admin.initialize_app(cred)
+if not firebase_admin._apps:
+    cred = credentials.Certificate("credenciais_quiz.json")
+    firebase_admin.initialize_app(cred)
+    
 db = firestore.client()
 
 nomes = ['Marcos', 'Davi', 'Felipe', 'Hiago', 'Ismael', 'Jônatas', 'Levi', 'Márcio', 'Pedro', 'Rubens', 'Tiago']
