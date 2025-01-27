@@ -1,4 +1,4 @@
-firebase-admin
-streamlit_authenticator
-secrets
-matplotlib.pyplot
+firebase-admin,
+streamlit_authenticator,
+secrets,
+matplotlib.pyplot,
